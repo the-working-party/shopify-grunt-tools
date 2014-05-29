@@ -61,11 +61,15 @@ module.exports = function (grunt) {[
 		},
 
 		watch: { //WATCH FOR CHANGES
-			concat: {
+			scss: {
 				files: ['lib/scss/setup/*.scss', 'lib/scss/display/*.scss', 'lib/scss/custom/*.scss'],
 				tasks: ['concat']
 			},
-			imagemin: {
+			js: {
+				files: ['lib/js/libraries/*.js', 'lib/js/*.js'],
+				tasks: ['uglify']
+			},
+			images: {
 				files: ['source-assets/images/**/*.{png,jpg,gif}'],
 				tasks: ['newer:imagemin', 'newer:copy', 'clean']
 			},
