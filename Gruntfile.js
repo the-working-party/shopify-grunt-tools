@@ -10,7 +10,7 @@ module.exports = function (grunt) {[
 	].forEach(grunt.loadNpmTasks);
 
 	grunt.initConfig({
-		concat: { //CONCATNING SCSS FILES
+		concat: { //CONCATENATING SCSS FILES
 			options: {},
 			dev: {
 				src: ['lib/scss/setup/*.scss', 'lib/scss/display/*.scss', 'lib/scss/custom/*.scss'],
@@ -44,12 +44,21 @@ module.exports = function (grunt) {[
 			},
 		},
 
-		copy: { //MOVE IMAGES TO ASSET FOLDER
-			main: {
+		copy: { //MOVE IMAGES AND SOURCE ASSETS TO ASSET FOLDER
+			images: {
 				files: [{
 					expand: true,
 					flatten: true,
 					src: ['compiled-assets/**'],
+					dest: 'theme/assets/',
+					filter: 'isFile'
+				}],
+			},
+			assets: {
+				files: [{
+					expand: true,
+					flatten: true,
+					src: ['source-assets/**', '!source-assets/images/**/*'],
 					dest: 'theme/assets/',
 					filter: 'isFile'
 				}],
@@ -71,7 +80,11 @@ module.exports = function (grunt) {[
 			},
 			images: {
 				files: ['source-assets/images/**/*.{png,jpg,gif}'],
-				tasks: ['newer:imagemin', 'newer:copy', 'clean']
+				tasks: ['newer:imagemin', 'newer:copy:images', 'clean']
+			},
+			assets: {
+				files: ['source-assets/**/*.*', '!source-assets/images/**/*.*'],
+				tasks: ['newer:copy:assets']
 			},
 		},
 	});
