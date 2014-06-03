@@ -29,7 +29,7 @@ Directory Layout
 - `source-assets` contains images that will be minified and moved to the shopify theme folder as well
 - `theme` - contains the usual shopify theme structures in which you can run your ```theme watch``` with [this tool](https://github.com/Shopify/shopify_theme)
 
-To see this in action with a framework called ["timer"](https://github.com/Shopify/Timber) have a loop at this [repo](https://github.com/dominikwilkowski/clean-timber)
+To see this in action with a framework called ["Timber"](https://github.com/Shopify/Timber) have a look at this [repo](https://github.com/dominikwilkowski/clean-timber)
 
 ## File sorting
 
